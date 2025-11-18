@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OtoJadi | Subscription Payment</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="nav_logo.png" alt="OtoJadi Logo" class="logo">
+    </div>
+    <div class="menu">
+      <a href="#">Home</a>
+      <a href="#">Templates</a>
+      <a href="#" class="active">Subscription</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ========== PAYMENT SECTION ========== -->
+  <section class="payment-container">
+    <h2>Choose Your Subscription Plan</h2>
+
+    <div class="plans">
+      <div class="plan-card">
+        <h3>1 Month</h3>
+        <p class="price">Rp 9.000 <span>/month</span></p>
+        <ul class="features">
+          <li><span>🔓</span> Full template access</li>
+          <li><span>⚡</span> Unlimited downloads</li>
+          <li><span>💼</span> Commercial license</li>
+          <li><span>⭐</span> No watermark</li>
+        </ul>
+        <button class="btn-select" onclick="selectPlan('1 Month', '9000')">Subscribe Now</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>3 Months</h3>
+        <p class="price">Rp 25.000</p>
+        <p class="sub">Rp 8.333 /month</p>
+        <ul class="features">
+          <li><span>🔓</span> Full template access</li>
+          <li><span>⚡</span> Unlimited downloads</li>
+          <li><span>💼</span> Commercial license</li>
+          <li><span>⭐</span> No watermark</li>
+        </ul>
+        <button class="btn-select" onclick="selectPlan('3 Months', '25000')">Subscribe Now</button>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="badge">Best Value</div>
+        <h3>6 Months</h3>
+        <p class="price">Rp 48.000</p>
+        <p class="sub">Rp 8.000 /month</p>
+        <ul class="features">
+          <li><span>🔓</span> Full template access</li>
+          <li><span>⚡</span> Unlimited downloads</li>
+          <li><span>💼</span> Commercial license</li>
+          <li><span>⭐</span> No watermark</li>
+        </ul>
+        <button class="btn-select" onclick="selectPlan('6 Months', '48000')">Subscribe Now</button>
+      </div>
+
+      <div class="plan-card">
+        <h3>12 Months</h3>
+        <p class="price">Rp 98.000</p>
+        <p class="sub">Rp 8.166 /month</p>
+        <ul class="features">
+          <li><span>🔓</span> Full template access</li>
+          <li><span>⚡</span> Unlimited downloads</li>
+          <li><span>💼</span> Commercial license</li>
+          <li><span>⭐</span> No watermark</li>
+        </ul>
+        <button class="btn-select" onclick="selectPlan('12 Months', '98000')">Subscribe Now</button>
+      </div>
+    </div>
+
+    <!-- QRIS Payment -->
+    <div class="payment-box" id="paymentBox">
+      <h3>QRIS Payment</h3>
+      <p id="selectedPlan">Please select a plan to continue.</p>
+      <div class="qris-container" id="qrisBox" style="display:none;">
+        <img src="qris-dummy.jpeg" alt="QRIS">
+        <p>Scan the QR code above to complete payment via your personal QRIS account.</p>
+        <button class="btn-select" onclick="confirmPayment()">Confirm Payment</button>
+        <button class="btn-back" onclick="resetPlan()">Back</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer-otojadi">
+    <div class="footer-links">
+      <a href="#">Home</a> |
+      <a href="#">Help Center</a> |
+      <a href="#">License</a> |
+      <a href="#">Terms & Conditions</a>
+    </div>
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+    </div>
+    <p class="footer-copy">© 2025 OtoJadi. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script>
+    let selectedPlanName = "";
+    let selectedPrice = "";
+
+    function selectPlan(plan, price) {
+      selectedPlanName = plan;
+      selectedPrice = price;
+      document.getElementById("selectedPlan").innerHTML = 
+        `You selected <strong>${plan}</strong> - Total: <strong>Rp ${price}</strong>`;
+      document.getElementById("qrisBox").style.display = "block";
+    }
+
+    function resetPlan() {
+      document.getElementById("selectedPlan").innerHTML = "Please select a plan to continue.";
+      document.getElementById("qrisBox").style.display = "none";
+    }
+
+    function confirmPayment() {
+      alert("Verifying payment... redirecting to success page.");
+      setTimeout(() => {
+        const waLink = `success.html?plan=${encodeURIComponent(selectedPlanName)}&price=${selectedPrice}`;
+        window.location.href = waLink;
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful | OtoJadi</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <img src="nav_logo.png" alt="OtoJadi Logo" class="logo">
+    </div>
+  </nav>
+
+  <section class="payment-success">
+    <img src="success-icon.png" alt="Success">
+    <h2>Payment Successful!</h2>
+    <p>Thank you for subscribing to OtoJadi.</p>
+    <p>To activate your subscription features, please contact us via WhatsApp.</p>
+    <a id="waLink" target="_blank">
+      <button class="btn-select">Contact via WhatsApp</button>
+    </a>
+  </section>
+
+  <footer class="footer-otojadi">
+    <p class="footer-copy">© 2025 OtoJadi. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const plan = urlParams.get("plan");
+    const price = urlParams.get("price");
+
+    const waText = encodeURIComponent(`Hello, I've completed the payment for the OtoJadi subscription (${plan}) - Rp ${price}. Please activate my subscription.`);
+    document.getElementById("waLink").href = `https://wa.me/6285959872110?text=${waText}`;
+  </script>
+</body>
+</html>
