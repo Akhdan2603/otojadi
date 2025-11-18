@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index copy.css">
+    <link rel="stylesheet" href="css/filter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="public\images\logo-otojadi.png" type="image/gif" sizes="16x16">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <title>otojadi</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="nav-left">
+        <a href="index.html"><img src="public/images/nav_logo.png" alt="Logo OtoJadi" class="logo"></a>
+        </div>
+
+        <form class="search-bar">
+        <input type="text" id="search" name="search" placeholder="Search templates..." />
+        <button type="submit">
+            <i data-lucide="search"></i>
+        </button>
+        </form>
+
+        <nav>
+            <ul>
+                <li><a href="myworkspace.html"><i class="fas fa-briefcase"></i>Workspace</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="dropdown-toggle" id="profileDropdown" role="button" aria-expanded="false">
+                        <i class="fas fa-user"></i>Profile
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                        <li><a style="color: red;" class="dropdown-item" href="logout.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container-2">
+        <div class="content-2">
+            <div class="filter-sidebar">
+                <div class="filter-section">
+                    <h3>By Category</h3>
+                    <div class="filter-group">
+                        <label class="filter-item">
+                            <input type="checkbox" name="category" value="All" checked onchange="updateFilter('category', this.value, this.checked)">
+                            <span>All Categories</span>
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" name="category" value="1" onchange="updateFilter('category', this.value, this.checked)">
+                            <span>Education</span>
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" name="category" value="2" onchange="updateFilter('category', this.value, this.checked)">
+                            <span>Business</span>
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" name="category" value="3" onchange="updateFilter('category', this.value, this.checked)">
+                            <span>Creative</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>By Type</h3>
+                    <div class="filter-group">
+                        <label class="filter-item">
+                            <input type="checkbox" name="type" value="All" checked onchange="updateFilter('type', this.value, this.checked)">
+                            <span>All Types</span>
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" name="type" value="1" onchange="updateFilter('type', this.value, this.checked)">
+                            <span>Type A</span>
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" name="type" value="2" onchange="updateFilter('type', this.value, this.checked)">
+                            <span>Type B</span>
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" name="type" value="3" onchange="updateFilter('type', this.value, this.checked)">
+                            <span>Type C</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="container-cardd">
+                <div class="page-detail">
+                    <h2>Hasil Pencarian <span>"Keyword"</span></h2>
+                    <form class="sort-form">
+                        <!-- ...existing code... -->
+                    </form>
+                </div>
+                <div class="card-container">
+                    <div class="template-grid">
+                        <div class="card">
+                            <a href="detailproduk.html?id=1" class="card-link">
+                                <img src="public/images/produk/sample1.jpg" alt="Produk 1">
+                            </a>
+                            <div class="favorite">
+                                <i id="heart-icon-1" class="fas fa-heart" style="color: rgb(255, 0, 0); font-size: 25px; cursor: pointer;" onclick="toggleFavorite(1, 1)"></i>
+                            </div>
+                            <h3>Produk 1</h3>
+                            <button onclick="addToWorkspace(1)">Add to Workspace</button>
+                        </div>
+                        <div class="card">
+                            <a href="detailproduk.html?id=2" class="card-link">
+                                <img src="public/images/produk/sample2.jpg" alt="Produk 2">
+                            </a>
+                            <div class="favorite">
+                                <i id="heart-icon-2" class="fas fa-heart" style="color: rgb(155, 155, 155); font-size: 25px; cursor: pointer;" onclick="toggleFavorite(1, 2)"></i>
+                            </div>
+                            <h3>Produk 2</h3>
+                            <button onclick="addToWorkspace(2)">Add to Workspace</button>
+                        </div>
+                        <div class="card">
+                            <a href="detailproduk.html?id=3" class="card-link">
+                                <img src="public/images/produk/sample3.jpg" alt="Produk 3">
+                            </a>
+                            <div class="favorite">
+                                <i id="heart-icon-3" class="fas fa-heart" style="color: rgb(155, 155, 155); font-size: 25px; cursor: pointer;" onclick="toggleFavorite(1, 3)"></i>
+                            </div>
+                            <h3>Produk 3</h3>
+                            <button onclick="addToWorkspace(3)">Add to Workspace</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    <!-- Login Prompt Popup -->
+    <div id="loginPrompt" class="popup-2" style="display: none;">
+        <div class="popup-content">
+            <h3>Login Required</h3>
+            <p>You need to login to access this feature.</p>
+            <div class="cart">
+                <button onclick="window.location.href='login.html'" class="checkout-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <button onclick="window.location.href='register.html'" class="checkout-btn" style="background-color: #28a745;">
+                    <i class="fas fa-user-plus"></i> Register
+                </button>
+                <button type="button" onclick="closeLoginPrompt()" class="cancel-btn" style="background-color: #f44336;">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-otojadi">
+        <div class="footer-top">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <span>|</span>
+            <a href="#">Help Center</a>
+            <span>|</span>
+            <a href="#">License Terms</a>
+            <span>|</span>
+            <a href="#">Terms & Conditions</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://www.instagram.com/otojadi/"><i data-lucide="instagram"></i></a>
+            <a href="#"><i data-lucide="twitter"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61582317293988"><i data-lucide="facebook"></i></a>
+        </div>
+        </div>
+        <p class="footer-copy">
+        © 2025 OtoJadi. Trademarks and brands are the property of their respective owners.
+        </p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        const isLoggedIn = true;
+
+        function showLoginPrompt() {
+            document.getElementById('loginPrompt').style.display = 'flex';
+        }
+
+        function closeLoginPrompt() {
+            document.getElementById('loginPrompt').style.display = 'none';
+        }
+
+        function toggleFavorite(userId, itemId) {
+            const icon = document.getElementById(`heart-icon-${itemId}`);
+            const isInFavorite = icon.style.color === "rgb(255, 0, 0)";
+            icon.style.color = isInFavorite ? "rgb(155, 155, 155)" : "rgb(255, 0, 0)";
+        }
+
+        function addToWorkspace(productId) {
+            alert('Template added to workspace!');
+        }
+
+        window.onclick = function(event) {
+            const loginPrompt = document.getElementById('loginPrompt');
+            if (event.target === loginPrompt) {
+                closeLoginPrompt();
+            }
+        }
+
+        function updateFilter(type, value, checked) {
+            // Dummy: just reload page
+            alert('Filter updated (dummy)');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.getElementById('profileDropdown');
+            const dropdownMenu = dropdown.nextElementSibling;
+            dropdown.addEventListener('click', function(e) {
+                e.preventDefault();
+                dropdownMenu.classList.toggle('show');
+            });
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
