@@ -1,0 +1,82 @@
+.form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin: 2rem auto;
+    max-width: 1200px;
+    width: 90%;
+}
+.image-preview {
+    max-width: 200px;
+    max-height: 200px;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    margin: 10px auto;
+}
+.image-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 4px;
+}
+.spec-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 200px);
+}
+
+.action-btn {
+display: inline-block;
+padding: 8px 12px;
+margin: 2px;
+border-radius: 4px;
+text-decoration: none;
+transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.btn-edit {
+background-color: #28a745;
+color: white;
+}
+
+.btn-edit:hover {
+background-color: #218838;
+color: white;
+}
+
+.btn-delete {
+background-color: #dc3545;
+color: white;
+}
+
+
+.btn-delete:hover {
+background-color: #c82333;
+color: white;
+}
+
+.sb-sidenav-menu{
+    background: #031E27;
+}
+
+.navbar-dark{
+    background: #031E27;
+}
+
+.sb-topnav {
+    background: #031E27 !important;
+}
