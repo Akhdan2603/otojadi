@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="public/images/logo-otojadi.png" type="image/gif" sizes="16x16">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="form-container">
+            <p class="register-login">Explore our <a href="index.html">Otojadi</a></p>
+            <h2>Time to Login<span style="color: #46D2C4;">.</span></h2>
+            <p class="register-login">Don't have an account? <a href="register.html">Register</a></p>
+
+            <form id="loginForm" action="index.html" method="GET"> <div class="input-group login">
+                    <label for="email"><i class="fas fa-envelope"></i></label>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+               
+                <div class="input-group login">
+                    <label for="password"><i class="fas fa-lock"></i></label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                
+                <div class="captcha-submit">
+                    <div class="input-group-captcha">
+                        <div class="g-recaptcha" data-theme="light" data-sitekey="6Le0Zm8rAAAAAOPturYMvc8fHc7nlLNilEh9i6t6" data-callback="enableSubmit"></div>
+                    </div>
+                    <button type="submit" class="login-button" name="log">Login</button> 
+                </div>
+            </form>
+
+            <div class="separator">
+                <hr>
+                <span>or login with</span>
+                <hr>
+            </div>
+
+            <div class="google-login">
+                <a href="#">
+                    <button type="button" class="google-button">
+                        <img src="public/images/google-icon.webp" alt="Google Logo" margin-right="5" height="20">Google
+                    </button>
+                </a>
+            </div>
+        </div>       
+        
+        <div class="image-placeholder">
+            <img src="public/images/logo-otojadi.png"  alt="OtoJadi Logo">
+        </div>
+
+    </div>
+    
+<script>
+    function enableSubmit() {
+        console.log("reCAPTCHA verified successfully");
+    }
+    
+    // MODIFIKASI DIMULAI DI SINI
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        // 1. Hentikan pengiriman form standar
+        event.preventDefault(); 
+        
+        // 2. Tambahkan class 'fade-out' ke body
+        document.body.classList.add('fade-out');
+
+        // 3. Simpan URL tujuan form
+        const destinationUrl = this.action;
+
+        // 4. Tunggu animasi selesai (500ms), baru pindah halaman
+        setTimeout(function() {
+            window.location.href = destinationUrl;
+        }, 500); // Durasi ini HARUS SAMA dengan durasi transisi di CSS
+    });
+</script>
+</body>
+</html>

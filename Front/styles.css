@@ -1,0 +1,310 @@
+/* Menghapus * karena box-sizing sudah ada di global */
+html {
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: Nunito;
+    src: url(../public/Nunito-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Nunito-Bold;
+    src: url(../public/Nunito-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: Plus Jakarta Sans;
+    src: url(../public/PlusJakartaSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: Plus Jakarta Sans Bold;
+    src: url(../public/PlusJakartaSans-VariableFont_wght.ttf);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+    /* Menggunakan min-height agar bisa scroll di mobile */
+    min-height: 100vh; 
+    background: url(../public/images/Background2.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    max-width: 1600px;
+    /* Menambah padding untuk spasi di mobile */
+    padding: 20px;
+}
+body.fade-out {
+    opacity: 0;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    /* Mengganti ke space-around untuk spasi yang lebih baik */
+    justify-content: space-around; 
+    gap: 30px;
+    width: 90%;
+    /* Menambah max-width untuk desktop besar */
+    max-width: 1000px; 
+}
+
+.image-placeholder {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-placeholder img {
+    /* Mengganti width tetap menjadi fleksibel */
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+    /* Menghapus margin-right, diganti oleh gap di container */
+}
+
+.form-container {
+    /* Menjadikan form fleksibel */
+    flex: 1; 
+    /* Mengganti width tetap menjadi max-width */
+    max-width: 510px; 
+    min-width: 300px; /* Lebar minimum */
+    /* Menghapus height tetap */
+    height: auto; 
+    padding: 20px;
+    border-radius: 15px;
+    /* Menambahkan style border agar terlihat */
+    border: 1px solid #fff; 
+    color: white;
+    font-size: 18px;
+    text-align: left;
+}
+
+.form-container h2 {
+    font-size: 70px;
+    margin: 15px 0px 15px 0px;
+    letter-spacing: -1px;
+    font-family: 'Plus Jakarta Sans';
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.login {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 15px 10px 45px;
+    border: none;
+    background-color: #0D635D;
+    border-radius: 15px;
+    outline: none;
+    height: 55px;
+    font-size: 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.input-group label {
+    position: absolute;
+    left: 15px;
+    top: 16.5px;
+    font-size: 18px;
+    color: #46D2C4;
+}
+
+.input-group input::placeholder {
+    color: #46D2C4;
+}
+
+.input-group input:focus {
+    outline: none;
+    color: #fff;
+}
+
+/* Penyesuaian untuk reCAPTCHA */
+.captcha-submit {
+    display: flex;
+    gap: 10px;
+    /* Memastikan elemen form sejajar */
+    align-items: flex-start;
+}
+
+.input-group-captcha {
+    position: relative;
+    /* Memberi ruang agar tombol tidak menempel */
+    flex-shrink: 0;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0D635D;
+    color: #fff;
+}
+
+.login-button {
+    background-color: #46D2C4;
+    color: #0D635D;
+    /* Menyesuaikan tinggi tombol agar sejajar captcha */
+    height: 78px; 
+}
+
+.register-button {
+    background-color: #46D2C4;
+    color: #0D635D;
+}
+
+.form-container a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-login a {
+    color: #46D2C4;
+    transition: 0.3s;
+}
+
+.register-login a:hover {
+    color: #fff;
+    transition: 0.3s;
+}
+
+.google-login {
+    margin-top: 20px;
+}
+
+.google-button {
+    width: 100%;
+    gap: 5px;
+    padding: 10px;
+    background-color: #ffffff;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+.google-button img {
+    margin-right: 5px; /* CSS untuk 'margin-right' yang ada di HTML */
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.separator hr {
+    flex: 1;
+    border: none;
+    border-top: 2px solid #ffffff;
+}
+
+.separator span {
+    margin: 0 10px;
+    color: #ffffff;
+}
+
+.notification {
+    color: rgb(242, 134, 134);
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.notification span{
+    color: #46D2C4;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+/* ============ MEDIA QUERIES UNTUK RESPONSIVE ============ */
+
+/* Tablet & HP Besar (Layout 1 kolom) */
+@media (max-width: 850px) {
+    .container {
+        /* Mengubah layout menjadi 1 kolom */
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        width: 100%; /* Mengambil lebar penuh di mobile */
+    }
+
+    .image-placeholder {
+        /* Sembunyikan gambar logo di layar kecil untuk fokus ke form */
+        display: none; 
+    }
+
+    .form-container {
+        width: 100%; /* Lebar penuh (dibatasi oleh max-width) */
+        padding: 30px; /* Padding lebih besar di mobile */
+    }
+
+    body {
+        /* Memastikan padding optimal di mobile */
+        padding: 20px; 
+    }
+}
+
+/* HP Kecil (Perbaikan reCAPTCHA & Font) */
+@media (max-width: 420px) {
+    .form-container h2 {
+        font-size: 50px; /* Mengecilkan judul */
+    }
+
+    .captcha-submit {
+        /* Menumpuk captcha dan tombol */
+        flex-direction: column; 
+        gap: 15px;
+        align-items: center; /* Pusatkan */
+    }
+
+    .login-button {
+        width: 100%;
+        height: 55px; /* Tinggi normal setelah ditumpuk */
+    }
+
+    /* Trik untuk mengecilkan reCAPTCHA agar tidak overflow */
+    .g-recaptcha {
+        transform: scale(0.9);
+        transform-origin: 0 0;
+    }
+
+    .input-group-captcha {
+        /* Memberi ruang untuk captcha yang dikecilkan */
+        min-height: 70px; 
+    }
+}

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh Produk - Otojadi</title>
+    <link rel="stylesheet" href="detailproduk.css">
+    <link rel="icon" href="public/images/logo-otojadi.png" type="image/gif" sizes="16x16">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="nav-left">
+        <a href="index.html"><img src="public/images/nav_logo.png" alt="Logo OtoJadi" class="logo"></a>
+    </div>
+    <form method="POST" class="search-bar">
+        <input type="text" id="search" name="search" placeholder="Search templates..." />
+        <button type="submit" name="submit_search">
+            <i data-lucide="search"></i>
+        </button>
+    </form>
+    <nav>
+        <ul>
+            <li><a href="myworkspace.html"><i class="fas fa-briefcase"></i>Workspace</a></li>
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle" id="profileDropdown" role="button" aria-expanded="false">
+                    <i class="fas fa-user"></i>Profile
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                    <li><a class="dropdown-item logout" href="logout.html">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="product-grid">
+        <div class="product-preview">
+            <div class="main-image">
+                <img src="public/images/produk/sample1.jpg" id="mainProductImage" alt="Product Main Image">
+            </div>
+
+            <div class="thumbnail-carousel">
+                <button id="thumb-prev" class="thumb-arrow">&lt;</button>
+                <div class="thumbnail-wrapper">
+                    <div class="thumbnail-list">
+                        <img src="public/images/produk/sample1.jpg" class="active" alt="Thumbnail 1">
+                        <img src="public/images/produk/sample2.jpg" alt="Thumbnail 2">
+                        <img src="public/images/produk/sample3.jpg" alt="Thumbnail 3">
+                        <img src="public/images/produk/sample4.jpg" alt="Thumbnail 4">
+                        <img src="public/images/produk/sample5.jpg" alt="Thumbnail 5">
+                        <img src="public/images/produk/sample6.jpg" alt="Thumbnail 6">
+                    </div>
+                </div>
+                <button id="thumb-next" class="thumb-arrow">&gt;</button>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1>Contoh Produk</h1>
+            <p class="product-author">By <a href="index.html">Otojadi</a></p>
+
+            <div class="purchase-box">
+                <div class="price">Rp 9.000</div>
+                <p>Or get unlimited downloads starting from <strong>Rp 9.000/month</strong></p>
+                <ul class="purchase-features">
+                    <li>26+ million premium assets & templates</li>
+                    <li>Lifetime commercial license</li>
+                    <li>Cancel anytime</li>
+                </ul>
+                <button class="cta-primary" onclick="window.location.href='subscribe.html'">
+                    Subscribe to Download
+                </button>
+                <button class="cta-secondary" onclick="addToWorkspace(1)">
+                    Add to Workspace
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="description-details">
+        <div class="description-content">
+            <h3>Deskripsi</h3>
+            <p>Ini adalah deskripsi contoh produk. Anda dapat menambahkan detail produk di sini. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+
+        <div class="item-tags">
+            <h3>Item Tags</h3>
+            <div class="tags-container">
+                <span class="tag">Tag1</span>
+                <span class="tag">Tag2</span>
+                <span class="tag">Tag3</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="loginPrompt" class="popup-2" style="display: none;">
+      <div class="popup-content">
+          <h3>Login Required</h3>
+          <p>You need to login to access this feature.</p>
+          <div class="popup-buttons">
+              <button onclick="window.location.href='login.html'" class="btn btn-primary">
+                  <i class="fas fa-sign-in-alt"></i> Login
+              </button>
+              <button onclick="window.location.href='register.html'" class="btn btn-secondary">
+                  <i class="fas fa-user-plus"></i> Register
+              </button>
+              <button type="button" onclick="closeLoginPrompt()" class="btn btn-tertiary">
+                  Cancel
+              </button>
+          </div>
+      </div>
+    </div>
+
+</div>
+
+<footer class="footer-otojadi">
+    <div class="footer-top">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <span>|</span>
+            <a href="#">Help Center</a>
+            <span>|</span>
+            <a href="#">License Terms</a>
+            <span>|</span>
+            <a href="#">Terms & Conditions</a>
+        </div>
+
+        <div class="footer-social">
+            <a href="https://www.instagram.com/otojadi/"><i data-lucide="instagram"></i></a>
+            <a href="#"><i data-lucide="twitter"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61582317293988"><i data-lucide="facebook"></i></a>
+        </div>
+    </div>
+    <p class="footer-copy">
+    © 2025 OtoJadi. Trademarks and brands are the property of their respective owners.
+    </p>
+</footer>
+
+<script>
+    lucide.createIcons();
+    const isLoggedIn = true; // Status login statis
+
+    function showLoginPrompt() {
+        document.getElementById('loginPrompt').style.display = 'flex';
+    }
+
+    function closeLoginPrompt() {
+        document.getElementById('loginPrompt').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        const loginPrompt = document.getElementById('loginPrompt');
+        if (event.target === loginPrompt) {
+            closeLoginPrompt();
+        }
+    }
+
+    // Dropdown Navbar
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdown = document.getElementById('profileDropdown');
+        const dropdownMenu = dropdown.nextElementSibling;
+        
+        dropdown.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdownMenu.classList.toggle('show');
+        });
+        
+        document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+    });
+
+    // Galeri Produk & Carousel
+    document.addEventListener("DOMContentLoaded", function() {
+        const mainImage = document.getElementById("mainProductImage");
+        const thumbnails = document.querySelectorAll(".thumbnail-list img");
+        if (!mainImage || thumbnails.length === 0) return; // Guard clause
+
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener("click", function() {
+                mainImage.src = this.src;
+                thumbnails.forEach(t => t.classList.remove("active"));
+                this.classList.add("active");
+            });
+        });
+
+        const prevButton = document.getElementById("thumb-prev");
+        const nextButton = document.getElementById("thumb-next");
+        const thumbList = document.querySelector(".thumbnail-list");
+        const thumbWrapper = document.querySelector(".thumbnail-wrapper");
+        
+        if (!prevButton || !nextButton || !thumbList || !thumbWrapper) return;
+
+        let currentIndex = 0;
+        let visibleItems = 6; // Default
+
+        function calculateVisibleItems() {
+            const thumbnailWidth = thumbnails[0].offsetWidth + 10; // 10 = gap
+            visibleItems = Math.floor(thumbWrapper.offsetWidth / thumbnailWidth);
+            if (visibleItems < 1) visibleItems = 1;
+        }
+
+        function updateCarousel() {
+            calculateVisibleItems();
+            const itemWidth = thumbnails[0].offsetWidth + 10; // 10 = gap
+            const maxIndex = thumbnails.length - visibleItems;
+            
+            if (currentIndex > maxIndex) currentIndex = maxIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            thumbList.style.transform = `translateX(${-currentIndex * itemWidth}px)`;
+            prevButton.disabled = currentIndex === 0;
+            nextButton.disabled = currentIndex === maxIndex || thumbnails.length <= visibleItems;
+        }
+
+        nextButton.addEventListener("click", function() {
+            const maxIndex = thumbnails.length - visibleItems;
+            if(currentIndex < maxIndex) currentIndex++;
+            updateCarousel();
+        });
+
+        prevButton.addEventListener("click", function() {
+            if(currentIndex > 0) currentIndex--;
+            updateCarousel();
+        });
+
+        // Inisialisasi & update saat resize
+        calculateVisibleItems();
+        updateCarousel();
+        window.addEventListener("resize", updateCarousel);
+    });
+
+    function addToWorkspace(productId) {
+        alert('Template added to workspace!');
+    }
+</script>
+</body>
+</html>
