@@ -1,5 +1,5 @@
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -7,17 +7,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
-enum Role {
-  USER
-  ADMIN
-}
+// enum Role {
+//   USER
+//   ADMIN
+// }
 
-enum OrderStatus {
-  PENDING
-  PAID
-  FAILED
-  EXPIRED
-}
+// enum OrderStatus {
+//   PENDING
+//   PAID
+//   FAILED
+//   EXPIRED
+// }
 
 model User {
   id            String    @id @default(cuid())
@@ -27,7 +27,7 @@ model User {
   password      String?
   phone         String?   @unique // For Twilio OTP
   image         String?
-  role          Role      @default(USER)
+  role          String    @default("USER")
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -43,12 +43,12 @@ model Account {
   type               String
   provider           String
   providerAccountId  String
-  refresh_token      String? @db.Text
-  access_token       String? @db.Text
+  refresh_token      String?
+  access_token       String?
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String? @db.Text
+  id_token           String?
   session_state      String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -60,11 +60,11 @@ model Product {
   id            String   @id @default(cuid())
   title         String
   slug          String   @unique
-  description   String   @db.Text
-  price         Decimal  @db.Decimal(10, 2)
-  discountPrice Decimal? @db.Decimal(10, 2)
+  description   String
+  price         Decimal
+  discountPrice Decimal?
   thumbnail     String?
-  images        Json?    // Array of image URLs
+  images        String?    // Array of image URLs
   fileUrl       String   // Path to the PPT template file
   demoUrl       String?  // Path to PDF preview
   categoryId    String
@@ -88,8 +88,8 @@ model Order {
   id            String      @id @default(cuid())
   userId        String
   user          User        @relation(fields: [userId], references: [id])
-  total         Decimal     @db.Decimal(10, 2)
-  status        OrderStatus @default(PENDING)
+  total         Decimal
+  status        String      @default("PENDING")
   snapToken     String?     // Midtrans Snap Token
   paymentUrl    String?
   createdAt     DateTime    @default(now())
@@ -104,7 +104,7 @@ model OrderItem {
   order     Order   @relation(fields: [orderId], references: [id])
   productId String
   product   Product @relation(fields: [productId], references: [id])
-  price     Decimal @db.Decimal(10, 2)
+  price     Decimal
 }
 
 model Review {
@@ -114,7 +114,7 @@ model Review {
   productId String
   product   Product  @relation(fields: [productId], references: [id])
   rating    Int
-  comment   String?  @db.Text
+  comment   String?
   createdAt DateTime @default(now())
 }
 
